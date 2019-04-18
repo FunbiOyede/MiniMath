@@ -10,9 +10,8 @@ export default function Header() {
 
 let heading = {
     fontSize:'36px',
-    float:'left',
-    padding:'20px',
+    paddingTop:'120px',
     color:'#def2f1',
-    fontWeight:'400',
+    fontWeight:'1000',
     lineHeight:'40px'
 }

@@ -52,23 +52,27 @@ class App extends Component {
   render() {
   
     return (
-      <div className="App">
+      <div className="app">
         <Header />    
     
  
 
-        <form style = {container} onSubmit={this.onSubmit}>
-        <label style={label}>Operation</label>
-        <input style={inputStyle} value={this.state.operation} type='text' placeholder='Enter  Operation E.g integrate' onChange={this.getOperationValue} onFocus={this.onFocus}/>
+        <form style = {FormContainer} onSubmit={this.onSubmit}>
 
-        <label style={label}>Expression</label>
-        <input style={inputStyle} value={this.state.expression} type='text' placeholder='Enter mathematical Expression E.g x^2+2x' onChange={this.getExpressionValue}/><br/>
-        <button style={btn} onClick={this.fetchApi}>Solve</button>
+          <label style={label}>operation</label>
+          <input style={inputStyle} value={this.state.operation} type='text' placeholder='Enter  Operation E.g integrate' onChange={this.getOperationValue} onFocus={this.onFocus}/>
+
+          <label style={label}>expression</label>
+          <input style={inputStyle} value={this.state.expression} type='text' placeholder='Enter mathematical Expression E.g x^2+2x' onChange={this.getExpressionValue}/><br/>
+
+          <button style={btn} onClick={this.fetchApi}>solve</button>
+        
+          <textarea  style={AnswerBox} value={this.state.result}></textarea>
         </form>;
-       
-         {/* icon herre */}
-        <textarea  style={AnswerBox} value={this.state.result}></textarea>
-      </div>
+        
+             
+      
+      </div> 
      
     );
   }
@@ -82,13 +86,13 @@ let inputStyle={
   padding:'15px',
   margin:'20px',
   outline:'none',
-  borderRadius:'2px',
+  borderRadius:'4px',
   borderWidth:'1px',
   letterSpacing:'0.5px',
   fontSize:'13px'
  }
-let container = {
-  paddingTop:'10%',
+
+let FormContainer = {
   display:'inline-block',
   width:'45%'
  }
@@ -97,33 +101,35 @@ let label={
   textAlign: 'center',
   color:'white',
   position: 'relative',
-  left: '-5%'
+  left: '-5%',
+  fontVariant:'small-caps'
  }
 
 let btn = {
-  padding:'10px',
-  borderRadius:'2px',
+  padding:'15px',
+  borderRadius:'4px',
   borderWidth:'1px',
   textAlign: 'center',
   width:'50%',
-  color:'#def2f1',
-  backgroundColor:'black',
-  border:'2px solid black',
+  color:'#fff',
+  backgroundColor:'#243053',
+  border:'2px solid white',
   position: 'relative',
-  left: '-6%'
+  left: '-6%',
+  fontVariant:'small-caps'
  }
 
 
 let AnswerBox = {
   display:'block',
-  width:'30%',
-  padding:'3px',
-  margin:'16px',
+  width:'50%',
+  padding:'8px',
+  margin:'20px',
   outline:'none',
-  borderRadius:'2px',
+  borderRadius:'4px',
   borderWidth:'1px',
   letterSpacing:'0.5px',
-  fontSize:'17px',
-  position: 'relative',
-  right: '-30em'
+  fontSize:'13px',
+  position:'relative',
+  left:'15%'
 }
