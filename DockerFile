@@ -2,17 +2,18 @@
 # base image and node version
 FROM node:10.15
 
-#create app directory
-RUN mkdir -p /usr/src/app
+#set working directory
+RUN mkdir  /usr/src/app
+#copy all files to docker
+COPY  . /usr/src/app
+
 WORKDIR /usr/src/app
 
-COPY package.json /usr/src/app/
+#add/usr/src/app/node_modules/.bin to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-RUN npm install
+#install and cache app dependencies
+RUN yarn
 
-ADD src /usr/src/app/src
-ADD public /usr/src/app/public
-
-RUN npm build
-
+#start app
 CMD ["npm", " start"]

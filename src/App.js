@@ -37,15 +37,18 @@ class App extends Component {
         this.setState({
           result:answer
         })
-    })  
-    this.setState({
-      operation:" ",
-      expression:" "
     })
+    .catch((err)=>{
+      throw err;
+    })  
+  
   }
 
   onFocus = () =>{
+  
     this.setState({
+      operation:" ",
+      expression:" ",
       result:" "
     })
   }
@@ -54,26 +57,22 @@ class App extends Component {
     return (
       <div className="app">
         <Header />    
-    
- 
 
         <form style = {FormContainer} onSubmit={this.onSubmit}>
 
           <label style={label}>operation</label>
-          <input style={inputStyle} value={this.state.operation} type='text' placeholder='Enter  Operation E.g integrate' onChange={this.getOperationValue} onFocus={this.onFocus}/>
+          <input style={inputStyle} value={this.state.operation} type='text' placeholder='Enter  Operation E.g integrate, Factor, simplify' onChange={this.getOperationValue}/>
 
           <label style={label}>expression</label>
-          <input style={inputStyle} value={this.state.expression} type='text' placeholder='Enter mathematical Expression E.g x^2+2x' onChange={this.getExpressionValue}/><br/>
+          <input style={inputStyle} value={this.state.expression} type='text' placeholder='Enter mathematical Expression E.g x^2+2x, 2^2+2(2)' onChange={this.getExpressionValue}/><br/>
 
           <button style={btn} onClick={this.fetchApi}>solve</button>
         
-          <textarea  style={AnswerBox} value={this.state.result}></textarea>
+          <textarea style={AnswerBox} value={this.state.result}></textarea>
         </form>;
         
-             
-      
+        <p style={note}>Note: To compute fractions, enter expressions as numerator(over)denominator. For example, to process 2/4 you must send in your expression as 2(over)4. The result expression will be in standard math notation (1/2, 3/4).</p>
       </div> 
-     
     );
   }
 }
@@ -123,7 +122,7 @@ let btn = {
 let AnswerBox = {
   display:'block',
   width:'50%',
-  padding:'8px',
+  padding:'5px',
   margin:'20px',
   outline:'none',
   borderRadius:'4px',
@@ -132,4 +131,10 @@ let AnswerBox = {
   fontSize:'13px',
   position:'relative',
   left:'15%'
+}
+
+let note = {
+  color:'white',
+ padding:'0 200px',
+ fontStyle:'italic'
 }
